@@ -7,7 +7,6 @@ def rnd_boolean():
     zahl = rnd_ganzzahl(0, 100)
     if zahl % 2 == 0:
         return True
-    else:
-        return False
+    return False
     
 print(rnd_boolean())
