@@ -28,6 +28,7 @@ Am Ende des kompletten Durchlaufes soll auch ausgegeben werden, wie oft welche G
 """
 
 from random import randint
+from random import shuffle
 
 def main():
     spielschein = spielschein_eingabe()
@@ -39,7 +40,7 @@ def main():
     while gewinnklasse != 1:
         ziehung = lotterie()
         counter_gesamt += 1
-        print(f'{counter_gesamt:,}')
+        # print(f'{counter_gesamt:,}')
         if gewinnklasse == 9:
             counter_9 += 1
         elif gewinnklasse == 8:
@@ -70,6 +71,7 @@ def main():
 
 def spielschein_eingabe():
     spielschein = []
+
     while len(spielschein) < 6:
         zahl = int(input('Zahl: '))
         if 1<= zahl <= 49 and zahl not in spielschein:
@@ -79,13 +81,9 @@ def spielschein_eingabe():
 
 
 def lotterie():
-    lotto_topf = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-                  18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
-    lotto_ziehung = []
-    while len(lotto_ziehung) < 6:
-            zahl = randint(1, 49)
-            if zahl in lotto_topf and zahl not in lotto_ziehung:
-                lotto_ziehung.append(zahl)
+    lotto_topf = list(range(1, 50))
+    shuffle(lotto_topf)
+    lotto_ziehung = lotto_topf[:6]
     superzahl = randint(1, 9)
     return sorted(lotto_ziehung), superzahl
 
@@ -112,7 +110,8 @@ def gewinnklasse_ermitteln(anz_richtige, superzahl_bool):
 
 
 def richtige_zahlen(ziehung, spielschein):
-    anz_richtige = 0    
+    anz_richtige = 0
+
     for i in range(6):
         for zahl in spielschein[0]:
             if zahl == ziehung[0][i]:
