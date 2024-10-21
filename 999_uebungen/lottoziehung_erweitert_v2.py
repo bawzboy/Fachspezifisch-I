@@ -88,6 +88,12 @@ def lotterie():
     return sorted(lotto_ziehung), superzahl
 
 
+def gewinnklasse_ermitteln_dozent(richtige, richtige_sz):
+    if richtige < 2 or richtige > 6 or (richtige ==2 and not richtige_sz):
+        return 
+    return 14 - 2 * richtige - richtige_sz
+
+
 def gewinnklasse_ermitteln(anz_richtige, superzahl_bool):
     if anz_richtige == 2 and superzahl_bool == True:
         return 9
