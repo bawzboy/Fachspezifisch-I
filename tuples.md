@@ -25,13 +25,13 @@ Variante 2:
 ```python
 my_tuple = ("apple", "banana")
 ```
-> Wichtig bei Tuples mit nur einem Wert MUSS ein Komma folgen:
+> Wichtig! Bei Tuples mit nur einem Wert MUSS ein Komma folgen:
 ```python
 my_tuple = ("apple",)
 ```
 
 
-<p style="page-break-after: always;">
+<div class="page"/>
 
 
 ## Tuple verändern
