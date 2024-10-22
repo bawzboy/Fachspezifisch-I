@@ -33,14 +33,14 @@ from random import shuffle
 def main():
     spielschein = spielschein_eingabe()
     ziehung = lotterie()
-    gewinnklasse = gewinnklasse_ermitteln(richtige_zahlen(ziehung, spielschein), richtige_superzahl(ziehung, spielschein))
+    gewinnklasse = gewinnklasse_ermitteln_dozent(richtige_zahlen(ziehung, spielschein), richtige_superzahl(ziehung, spielschein))
 
     counter_gesamt, counter_9, counter_8, counter_7, counter_6, counter_5, counter_4, counter_3, counter_2 = 0, 0, 0, 0, 0, 0, 0, 0, 0
 
     while gewinnklasse != 1:
         ziehung = lotterie()
         counter_gesamt += 1
-        # print(f'{counter_gesamt:,}')
+        print(f'{counter_gesamt:,}')
         if gewinnklasse == 9:
             counter_9 += 1
         elif gewinnklasse == 8:
@@ -94,7 +94,7 @@ def gewinnklasse_ermitteln_dozent(richtige, richtige_sz):
     return 14 - 2 * richtige - richtige_sz
 
 
-def gewinnklasse_ermitteln(anz_richtige, superzahl_bool):
+def gewinnklasse_ermitteln(anz_richtige, superzahl_bool): # return Wert int() casten?
     if anz_richtige == 2 and superzahl_bool == True:
         return 9
     elif anz_richtige == 3 and superzahl_bool == False:
