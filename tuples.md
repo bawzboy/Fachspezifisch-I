@@ -31,7 +31,7 @@ my_tuple = ("apple",)
 ```
 
 
-#Seitenumbruch
+<p style="page-break-after: always;">
 
 
 ## Tuple verändern
@@ -78,9 +78,6 @@ Durch Nutzung des Sterns * kann man mehrere Werte einer Variablen als Liste zuf�
 fruits = ("apple", "banana", "cherry", "strawberry", "raspberry")
 (green, yellow, *red) = fruits
 ```
-
-
-#Seitenumbruch
 
 
 ## Über Tuple iterieren
