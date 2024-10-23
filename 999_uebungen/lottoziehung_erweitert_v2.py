@@ -30,10 +30,12 @@ Am Ende des kompletten Durchlaufes soll auch ausgegeben werden, wie oft welche G
 from random import randint
 from random import shuffle
 
+
 def main():
     spielschein = spielschein_eingabe()
     ziehung = lotterie()
-    gewinnklasse = gewinnklasse_ermitteln_dozent(richtige_zahlen(ziehung, spielschein), richtige_superzahl(ziehung, spielschein))
+    gewinnklasse = gewinnklasse_ermitteln_dozent(richtige_zahlen(ziehung, spielschein), 
+                                                richtige_superzahl(ziehung, spielschein))
 
     counter_gesamt, counter_9, counter_8, counter_7, counter_6, counter_5, counter_4, counter_3, counter_2 = 0, 0, 0, 0, 0, 0, 0, 0, 0
 
@@ -95,23 +97,23 @@ def gewinnklasse_ermitteln_dozent(richtige, richtige_sz):
 
 
 def gewinnklasse_ermitteln(anz_richtige, superzahl_bool): # return Wert int() casten?
-    if anz_richtige == 2 and superzahl_bool == True:
+    if anz_richtige == 2 and superzahl_bool is True:
         return 9
-    elif anz_richtige == 3 and superzahl_bool == False:
+    elif anz_richtige == 3 and superzahl_bool is False:
         return 8
-    elif anz_richtige == 3 and superzahl_bool == True:
+    elif anz_richtige == 3 and superzahl_bool is True:
         return 7
-    elif anz_richtige == 4 and superzahl_bool == False:
+    elif anz_richtige == 4 and superzahl_bool is False:
         return 6
-    elif anz_richtige == 4 and superzahl_bool == True:
+    elif anz_richtige == 4 and superzahl_bool is True:
         return 5
-    elif anz_richtige == 5 and superzahl_bool == False:
+    elif anz_richtige == 5 and superzahl_bool is False:
         return 4
-    elif anz_richtige == 5 and superzahl_bool == True:
+    elif anz_richtige == 5 and superzahl_bool is True:
         return 3
-    elif anz_richtige == 6 and superzahl_bool == False:
+    elif anz_richtige == 6 and superzahl_bool is False:
         return 2
-    elif anz_richtige == 6 and superzahl_bool == True:
+    elif anz_richtige == 6 and superzahl_bool is True:
         return 1
 
 
@@ -130,7 +132,7 @@ def richtige_superzahl(ziehung, spielschein):
         return True
     else:
         return False
-    
+
 
 if __name__ == '__main__':
     main()
