@@ -34,8 +34,7 @@ from random import shuffle
 def main():
     spielschein = spielschein_eingabe()
     ziehung = lotterie()
-    gewinnklasse = gewinnklasse_ermitteln_dozent(richtige_zahlen(ziehung, spielschein), 
-                                                richtige_superzahl(ziehung, spielschein))
+    gewinnklasse = gewinnklasse_ermitteln_dozent(richtige_zahlen(ziehung, spielschein), richtige_superzahl(ziehung, spielschein))
 
     counter_gesamt, counter_9, counter_8, counter_7, counter_6, counter_5, counter_4, counter_3, counter_2 = 0, 0, 0, 0, 0, 0, 0, 0, 0
 
