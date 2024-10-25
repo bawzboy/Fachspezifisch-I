@@ -1,13 +1,17 @@
 """
 Schreibe ein Programm, mit dem Du Lotto spielen kannst. 6 aus 49.
  
-Als Eingabe müssen 6 unterschiedliche Zahlen zwischen 1 und 49 aufgenommen werden. Als siebte Zahl erfolgt dann die Angabe der Superzahl (0 - 9)
+Als Eingabe müssen 6 unterschiedliche Zahlen zwischen 1 und 49 aufgenommen werden. 
+Als siebte Zahl erfolgt dann die Angabe der Superzahl (0 - 9)
  
-In einer danach folgenden Schleife sollen per Zufallsgenerator 6 unterschiedliche(!) Zahlen gezogen und eine Superzahl ermittelt werden. Eine count Variable soll die Anzahl der insgesamten Durchläufe anzeigen.
+In einer danach folgenden Schleife sollen per Zufallsgenerator 6 unterschiedliche(!) Zahlen 
+gezogen und eine Superzahl ermittelt werden. 
+Eine count Variable soll die Anzahl der insgesamten Durchläufe anzeigen.
  
 Jede Gewinnkombination soll auf der Konsole ausgegeben werden.
  
-Die Schleife ist fertig, wenn 6 Richtige inkl. Superzahl gezogen wurden. Dann die Gewinnkombination ausgeben und die Anzahl der Ziehungen.
+Die Schleife ist fertig, wenn 6 Richtige inkl. Superzahl gezogen wurden. 
+Dann die Gewinnkombination ausgeben und die Anzahl der Ziehungen.
 
 
 Gewinnklassen (Die Ziffer ist die Anzahl der Richtigen. SZ ist die Superzahl)
@@ -24,8 +28,10 @@ IX   -> 2SZ
 
 
 Bonusmission:
-Am Ende des kompletten Durchlaufes soll auch ausgegeben werden, wie oft welche Gewinnkombination gezogen wurde.
+Am Ende des kompletten Durchlaufes soll auch ausgegeben werden, 
+wie oft welche Gewinnkombination gezogen wurde.
 """
+
 
 from random import randint
 from random import shuffle
@@ -34,14 +40,17 @@ from random import shuffle
 def main():
     spielschein = spielschein_eingabe()
     ziehung = lotterie()
-    gewinnklasse = gewinnklasse_ermitteln_dozent(richtige_zahlen(ziehung, spielschein), richtige_superzahl(ziehung, spielschein))
+    gewinnklasse = gewinnklasse_ermitteln(richtige_zahlen(ziehung, spielschein),
+                                                richtige_superzahl(ziehung, spielschein))
 
-    counter_gesamt, counter_9, counter_8, counter_7, counter_6, counter_5, counter_4, counter_3, counter_2 = 0, 0, 0, 0, 0, 0, 0, 0, 0
+    counter_gesamt, counter_9, counter_8, counter_7, counter_6, \
+        counter_5, counter_4, counter_3, counter_2 = 0, 0, 0, 0, 0, 0, 0, 0, 0
 
     while gewinnklasse != 1:
         ziehung = lotterie()
         counter_gesamt += 1
         print(f'{counter_gesamt:,}')
+        print(gewinnklasse)
         if gewinnklasse == 9:
             counter_9 += 1
         elif gewinnklasse == 8:
@@ -85,17 +94,17 @@ def lotterie():
     lotto_topf = list(range(1, 50))
     shuffle(lotto_topf)
     lotto_ziehung = lotto_topf[:6]
-    superzahl = randint(1, 9)
+    superzahl = randint(0, 9)
     return sorted(lotto_ziehung), superzahl
 
 
 def gewinnklasse_ermitteln_dozent(richtige, richtige_sz):
     if richtige < 2 or richtige > 6 or (richtige ==2 and not richtige_sz):
-        return 
+        return
     return 14 - 2 * richtige - richtige_sz
 
 
-def gewinnklasse_ermitteln(anz_richtige, superzahl_bool): # return Wert int() casten?
+def gewinnklasse_ermitteln(anz_richtige: int, superzahl_bool: bool) -> int:
     if anz_richtige == 2 and superzahl_bool is True:
         return 9
     elif anz_richtige == 3 and superzahl_bool is False:
@@ -116,7 +125,7 @@ def gewinnklasse_ermitteln(anz_richtige, superzahl_bool): # return Wert int() ca
         return 1
 
 
-def richtige_zahlen(ziehung, spielschein):
+def richtige_zahlen(ziehung, spielschein) -> int:
     anz_richtige = 0
 
     for i in range(6):
@@ -126,11 +135,8 @@ def richtige_zahlen(ziehung, spielschein):
     return anz_richtige
 
 
-def richtige_superzahl(ziehung, spielschein):
-    if ziehung[1] == spielschein[1]:
-        return True
-    else:
-        return False
+def richtige_superzahl(ziehung, spielschein) -> bool:
+    return ziehung[1] == spielschein[1]
 
 
 if __name__ == '__main__':
