@@ -38,6 +38,7 @@ from random import shuffle
 
 
 def main():
+
     spielschein = spielschein_eingabe()
     ziehung = lotterie()
     gewinnklasse = gewinnklasse_ermitteln(richtige_zahlen(ziehung, spielschein),
@@ -80,6 +81,7 @@ def main():
 
 
 def spielschein_eingabe():
+
     spielschein = []
 
     while len(spielschein) < 6:
@@ -91,6 +93,7 @@ def spielschein_eingabe():
 
 
 def lotterie():
+
     lotto_topf = list(range(1, 50))
     shuffle(lotto_topf)
     lotto_ziehung = lotto_topf[:6]
@@ -99,12 +102,14 @@ def lotterie():
 
 
 def gewinnklasse_ermitteln_dozent(richtige, richtige_sz):
+
     if richtige < 2 or richtige > 6 or (richtige ==2 and not richtige_sz):
         return
     return 14 - 2 * richtige - richtige_sz
 
 
 def gewinnklasse_ermitteln(anz_richtige: int, superzahl_bool: bool) -> int:
+
     if anz_richtige == 2 and superzahl_bool is True:
         return 9
     elif anz_richtige == 3 and superzahl_bool is False:
@@ -126,6 +131,7 @@ def gewinnklasse_ermitteln(anz_richtige: int, superzahl_bool: bool) -> int:
 
 
 def richtige_zahlen(ziehung, spielschein) -> int:
+
     anz_richtige = 0
 
     for i in range(6):
@@ -136,6 +142,7 @@ def richtige_zahlen(ziehung, spielschein) -> int:
 
 
 def richtige_superzahl(ziehung, spielschein) -> bool:
+    
     return ziehung[1] == spielschein[1]
 
 
