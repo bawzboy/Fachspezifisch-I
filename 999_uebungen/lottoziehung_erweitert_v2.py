@@ -50,8 +50,6 @@ def main():
         gewinnklasse = gewinnklasse_ermitteln(richtige_zahlen(ziehung, spielschein),
                                             richtige_superzahl(ziehung, spielschein))
         counter_gesamt += 1
-        print(f'{counter_gesamt:,}')
-        print(gewinnklasse)
 
         if gewinnklasse == 9:
             counter_9 += 1
