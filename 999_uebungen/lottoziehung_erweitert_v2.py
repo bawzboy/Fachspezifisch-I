@@ -41,17 +41,18 @@ def main():
 
     spielschein = spielschein_eingabe()
     ziehung = lotterie()
-    gewinnklasse = gewinnklasse_ermitteln(richtige_zahlen(ziehung, spielschein),
-                                                richtige_superzahl(ziehung, spielschein))
 
     counter_gesamt, counter_9, counter_8, counter_7, counter_6, \
         counter_5, counter_4, counter_3, counter_2 = 0, 0, 0, 0, 0, 0, 0, 0, 0
 
-    while gewinnklasse != 1:
+    while True:
         ziehung = lotterie()
+        gewinnklasse = gewinnklasse_ermitteln(richtige_zahlen(ziehung, spielschein),
+                                            richtige_superzahl(ziehung, spielschein))
         counter_gesamt += 1
         print(f'{counter_gesamt:,}')
         print(gewinnklasse)
+
         if gewinnklasse == 9:
             counter_9 += 1
         elif gewinnklasse == 8:
@@ -68,8 +69,10 @@ def main():
             counter_3 += 1
         elif gewinnklasse == 2:
             counter_2 += 1
+        elif gewinnklasse == 1:
+            print(f'Jackpot! Gewinnklasse I wurde in {counter_gesamt} Ziehungen erreicht!')
+            break
 
-    print(f'Jackpot! Gewinnklasse I wurde in {counter_gesamt} Ziehungen erreicht!')
     print(f'Gewinnklasse II wurde {counter_2} gezogen')
     print(f'Gewinnklasse III wurde {counter_3} gezogen')
     print(f'Gewinnklasse IV wurde {counter_4} gezogen')
@@ -101,36 +104,36 @@ def lotterie():
     return sorted(lotto_ziehung), superzahl
 
 
-def gewinnklasse_ermitteln_dozent(richtige, richtige_sz):
+# def gewinnklasse_ermitteln_dozent(richtige, richtige_sz):
 
-    if richtige < 2 or richtige > 6 or (richtige ==2 and not richtige_sz):
-        return
-    return 14 - 2 * richtige - richtige_sz
+#     if richtige < 2 or richtige > 6 or (richtige ==2 and not richtige_sz):
+#         return
+#     return 14 - 2 * richtige - richtige_sz
 
 
 def gewinnklasse_ermitteln(anz_richtige: int, superzahl_bool: bool) -> int:
 
     if anz_richtige == 2 and superzahl_bool is True:
         return 9
-    elif anz_richtige == 3 and superzahl_bool is False:
+    if anz_richtige == 3 and superzahl_bool is False:
         return 8
-    elif anz_richtige == 3 and superzahl_bool is True:
+    if anz_richtige == 3 and superzahl_bool is True:
         return 7
-    elif anz_richtige == 4 and superzahl_bool is False:
+    if anz_richtige == 4 and superzahl_bool is False:
         return 6
-    elif anz_richtige == 4 and superzahl_bool is True:
+    if anz_richtige == 4 and superzahl_bool is True:
         return 5
-    elif anz_richtige == 5 and superzahl_bool is False:
+    if anz_richtige == 5 and superzahl_bool is False:
         return 4
-    elif anz_richtige == 5 and superzahl_bool is True:
+    if anz_richtige == 5 and superzahl_bool is True:
         return 3
-    elif anz_richtige == 6 and superzahl_bool is False:
+    if anz_richtige == 6 and superzahl_bool is False:
         return 2
-    elif anz_richtige == 6 and superzahl_bool is True:
+    if anz_richtige == 6 and superzahl_bool is True:
         return 1
 
 
-def richtige_zahlen(ziehung, spielschein) -> int:
+def richtige_zahlen(ziehung: tuple[list[int], int], spielschein: tuple[list[int], int]) -> int:
 
     anz_richtige = 0
 
@@ -141,8 +144,8 @@ def richtige_zahlen(ziehung, spielschein) -> int:
     return anz_richtige
 
 
-def richtige_superzahl(ziehung, spielschein) -> bool:
-    
+def richtige_superzahl(ziehung: tuple[list[int], int], spielschein: tuple[list[int], int]) -> bool:
+
     return ziehung[1] == spielschein[1]
 
 
