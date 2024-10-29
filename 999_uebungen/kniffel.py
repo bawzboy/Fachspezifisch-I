@@ -10,8 +10,15 @@ for _ in range(1000):
     for _ in range(5):
         roll += randint(1, 6)
 
-    if roll in statistic:
-        statistic[roll] += 1
+    statistic[roll] += 1
 
 for key, value in statistic.items():
-    print(f'{key:02d} -> {value * 'x'}')
+    print(f'{key:02} -> {value * 'x'}')
+
+
+# from random import randint  # Möglichst kurze Lösung von John und Daniel
+# results = [int()] * 26
+# for _ in range(1_000):
+#      results[sum(randint(1,6) for _ in range(5)) - 5] += 1
+# for i in range(len(results)):
+#      print(f"{i + 5:0>2d}->{"x" * results[i]}")
