@@ -12,8 +12,8 @@ for _ in range(3):
 
 
 # Probe:
-# haufen2 = x
+# probe = x
 # for _ in range(4):
-#     if haufen2 % 3 == 1:
-#         haufen2 = haufen2 - ((haufen2 - 1) / 3)
-#         print(haufen2)
+#     if probe % 3 == 1:
+#         probe = probe - ((probe - 1) / 3)
+#         print(probe)
