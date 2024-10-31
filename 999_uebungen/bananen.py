@@ -1,6 +1,6 @@
 haufen = 4  # 13, 40, 121
 for _ in range(3):
-    haufen = ((haufen / 2) * 3) + 1
+    haufen = (haufen - 1) * 2 / 3
     print(int(haufen))
 
 # (ursprungshaufen - 1) * 2/3
@@ -10,9 +10,8 @@ for _ in range(3):
 # 4, 7, ?
 
 
-
 # Probe:
-# probe = x
+# probe = 4
 # for _ in range(4):
 #     if probe % 3 == 1:
 #         probe = probe - ((probe - 1) / 3)
