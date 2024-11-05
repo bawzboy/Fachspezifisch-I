@@ -8,15 +8,13 @@ Baue eine Rundungsfunktion
 # stellen = int(input('Wie viele Stellen? '))
 
 
-def runde_zahl(zahl: int, rundungsstelle: int):
-    zahl = str(zahl)
-    if int(zahl[rundungsstelle + 1]) > 5:
-        zahl[rundungsstelle] += 1
-    return int(zahl)
+def runde_zahl(zahl: float, rundungsstelle: int = 0):
+    pass
 
 
-# runde_zahl(31337, 3)
+# runde_zahl(31336,5)
 
 # brauche rundungstelle + stelle dahinter
 # if stelle dahinter > 5: rundungsstelle +1
 # else rundungsstelle = rundungsstelle
+# cut off rest after rundungsstelle
