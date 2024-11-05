@@ -1,7 +1,7 @@
-haufen = 4  # 13, 40, 121
-for _ in range(3):
-    haufen = (haufen - 1) * 2 / 3
-    print(int(haufen))
+# haufen = 4  # 13, 40, 121
+# for _ in range(3):
+#     haufen = (haufen - 1) * 2 / 3
+#     print(int(haufen))
 
 # (ursprungshaufen - 1) * 2/3
 # das passiert 3 mal
@@ -11,7 +11,7 @@ for _ in range(3):
 
 
 # Probe:
-# probe = 4
+# probe = 79
 # for _ in range(4):
 #     if probe % 3 == 1:
 #         probe = probe - ((probe - 1) / 3)
@@ -30,4 +30,4 @@ for _ in range(3):
 #         return x
 #       x += 1
 
-# print (" Die mindeste Anzahl von Bananen ist:",bananen_min() )
+# print ("Die mindeste Anzahl von Bananen ist: ",bananen_min() )
